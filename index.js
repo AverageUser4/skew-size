@@ -26,12 +26,12 @@ const context = canvas.getContext('2d');
 
 var myDegreeX = 35;
 var myDegreeY = -80;
-var myWidth = 80;
-var myHeight = 80;
+var myWidth = 300;
+var myHeight = 300;
 
 const { width, height } = getSkewedSize(myWidth, myHeight, myDegreeX, myDegreeY);
-const movedX = width < 0 ? -width : 0;
-const movedY = height < 0 ? -height : 0;
+const movedX = myDegreeX < 0 ? width - myWidth : 0;
+const movedY = myDegreeY < 0 ? height - myHeight : 0;
 
 canvas.width = width > 0 ? width : canvas.width - width;
 canvas.height = height > 0 ? height : canvas.height - height;
@@ -66,6 +66,9 @@ function setSkew(degrees){
 function getSkewedSize(width, height, degreeX, degreeY) {
   /* https://stackoverflow.com/questions/9281320/calculate-new-width-when-skewing-in-canvas */
   /* http://jsfiddle.net/LBzUt/33/ */
+
+  degreeX = Math.abs(degreeX);
+  degreeY = Math.abs(degreeY);
 
   const widthSkewed = setSkew(degreeX) * height;
   const heightSkewed = setSkew(degreeY) * width;
