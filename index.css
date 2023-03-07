@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  
+  background-color: black;
+  color: white;
+}
+
+canvas {
+  background-color: white;
+  outline: 2px solid cyan;
+}
